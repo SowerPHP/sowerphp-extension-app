@@ -41,6 +41,7 @@ class Model_Region extends \Model_App
     // Atributos de la clase (columnas en la base de datos)
     public $codigo; ///< Código de la región: character(2) NOT NULL DEFAULT '' PK
     public $region; ///< Nombre de la región: character varying(60) NOT NULL DEFAULT ''
+    public $orden; ///< smallint(16) NOT NULL DEFAULT '0'
 
     // Información de las columnas de la tabla en la base de datos
     public static $columnsInfo = array(
@@ -62,6 +63,17 @@ class Model_Region extends \Model_App
             'length'    => 60,
             'null'      => false,
             'default'   => "",
+            'auto'      => false,
+            'pk'        => false,
+            'fk'        => null
+        ),
+        'orden' => array(
+            'name'      => 'Orden',
+            'comment'   => '',
+            'type'      => 'smallint',
+            'length'    => 16,
+            'null'      => false,
+            'default'   => '0',
             'auto'      => false,
             'pk'        => false,
             'fk'        => null
