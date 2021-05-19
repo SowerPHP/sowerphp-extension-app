@@ -3,7 +3,8 @@ BEGIN;
 DROP TABLE IF EXISTS region CASCADE;
 CREATE TABLE region (
 	codigo CHAR(2) PRIMARY KEY,
-	region CHARACTER VARYING (60) NOT NULL
+	region CHARACTER VARYING (60) NOT NULL,
+	orden SMALLINT NOT NULL DEFAULT 0
 );
 COMMENT ON TABLE region IS 'Regiones del país';
 COMMENT ON COLUMN region.codigo IS 'Código de la región';
