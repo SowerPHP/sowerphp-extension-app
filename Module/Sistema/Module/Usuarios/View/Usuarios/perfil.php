@@ -51,18 +51,20 @@ echo $form->input(array(
     'attr' => 'maxlength="50"',
 ));
 echo $form->input(array(
+    'type' => 'textpass',
     'name' => 'hash',
     'label' => 'Hash',
     'value' => $_Auth->User->hash,
     'help' => 'Código único para identificar el usuario (32 caracteres).<br />Si desea uno nuevo, borrar este y automáticamente se generará uno nuevo al guardar los cambios',
-    'attr' => 'maxlength="32" onclick="this.select()" onmouseover="this.type=\'text\'" onmouseout="this.type=\'password\'"',
+    'attr' => 'maxlength="32" autocomplete="off" onclick="this.select()"',
 ));
 echo $form->input(array(
+    'type' => 'textpass',
     'name' => 'api_key',
     'label' => 'API key',
     'value' => base64_encode($_Auth->User->hash.':X'),
     'help' => 'Valor de la cabecera Authorization de HTTP para autenticar en la API usando sólo la API key, la cual está basada en el hash del usuario',
-    'attr' => 'readonly="readonly" onclick="this.select()" onmouseover="this.type=\'text\'" onmouseout="this.type=\'password\'"',
+    'attr' => 'readonly="readonly" onclick="this.select()"',
 ));
 if ($_Auth->User->getLdapPerson() and $_Auth->User->getLdapPerson()->uid != $_Auth->User->usuario) {
     echo $form->input(array(
@@ -228,10 +230,3 @@ if ($grupos) {
 
     </div>
 </div>
-
-<script>
-$(function() {
-    $('#hashField').attr('type', 'password');
-    $('#api_keyField').attr('type', 'password');
-});
-</script>
